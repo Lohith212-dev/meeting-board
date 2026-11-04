@@ -1,0 +1,1134 @@
+{
+ "meta": {
+  "title": "Weekly Product Sync",
+  "short": "Product Sync",
+  "date": "Tue 10 Nov 2026",
+  "start": "09:30",
+  "platform": "Teams",
+  "medium": "Microsoft Teams, recorded and transcribed",
+  "place": "Remote",
+  "duration": 4320,
+  "agenda": "Insights launch scope, pricing, and the launch plan",
+  "recording": "",
+  "transcript": "Weekly Product Sync.docx"
+ },
+ "people": [
+  {
+   "id": "emma",
+   "name": "Emma Clarke",
+   "title": "CEO",
+   "attended": true
+  },
+  {
+   "id": "laura",
+   "name": "Laura Bennett",
+   "title": "Product Designer",
+   "attended": true
+  },
+  {
+   "id": "marco",
+   "name": "Marco Rossi",
+   "title": "Head of Engineering",
+   "attended": true
+  },
+  {
+   "id": "daniel",
+   "name": "Daniel Reyes",
+   "title": "Sales Lead",
+   "attended": true,
+   "note": "Left at 49:50"
+  },
+  {
+   "id": "sarah",
+   "name": "Sarah Mitchell",
+   "title": "Head of Finance",
+   "attended": true,
+   "note": "Joined at 30:05"
+  },
+  {
+   "id": "olivia",
+   "name": "Olivia Hart",
+   "title": "Marketing Lead"
+  },
+  {
+   "id": "nadia",
+   "name": "Nadia Petrova",
+   "title": "Customer Success Lead"
+  },
+  {
+   "id": "tom",
+   "name": "Tom Becker",
+   "title": "Launch agency (external)",
+   "external": true
+  }
+ ],
+ "mapRoot": {
+  "title": "Fernway",
+  "sub": "Ship Insights small, price it with evidence"
+ },
+ "mapIntro": "One feature, one pricing question, one plan. Pick a project for the detail.",
+ "links": [
+  {
+   "from": "insights",
+   "to": "pricing",
+   "label": "needs a price from"
+  },
+  {
+   "from": "pricing",
+   "to": "launch",
+   "label": "is decided in week 3 of"
+  }
+ ],
+ "summary": {
+  "lead": "Ship Insights small, price it with evidence.",
+  "accent": "The beta opens on 23 Nov with five steps only. Both prices get tested for two weeks before anyone chooses.",
+  "points": [
+   {
+    "project": "insights",
+    "t": 100,
+    "title": "Beta on 23 Nov",
+    "text": "If the Zendesk connector is ready by 20 Nov. Ten customers first."
+   },
+   {
+    "project": "insights",
+    "t": 1230,
+    "title": "Scope is locked",
+    "text": "Connect, spot, explain, suggest, report. No custom dashboards in version 1."
+   },
+   {
+    "project": "pricing",
+    "t": 2475,
+    "title": "Test both prices",
+    "text": "Starter tier versus usage add-on, two weeks on beta trials. The winner must beat 14% conversion."
+   },
+   {
+    "project": "launch",
+    "t": 3390,
+    "title": "Three-week launch",
+    "text": "Beta, public launch with the agency, then review the numbers and pick the price."
+   }
+  ]
+ },
+ "chapters": [
+  {
+   "n": 1,
+   "start": 0,
+   "end": 420,
+   "project": "insights",
+   "title": "What this meeting must decide",
+   "see": [
+    "Beta date depends on the Zendesk connector",
+    "Three big accounts already asked for Insights",
+    "Who is missing today"
+   ]
+  },
+  {
+   "n": 2,
+   "start": 420,
+   "end": 1290,
+   "project": "insights",
+   "title": "What Insights does for a support manager",
+   "see": [
+    "Five steps: connect, spot, explain, suggest, report",
+    "Explaining why is the hard part",
+    "Scope locked, no custom dashboards"
+   ]
+  },
+  {
+   "n": 3,
+   "start": 1290,
+   "end": 1800,
+   "project": "insights",
+   "title": "What customers plug in, and trust",
+   "see": [
+    "Ticket history, release notes, customer list",
+    "Upload screen for messy release notes",
+    "SOC 2 report and a data note"
+   ]
+  },
+  {
+   "n": 4,
+   "start": 1800,
+   "end": 2760,
+   "project": "pricing",
+   "title": "Pricing: starter tier or usage add-on?",
+   "see": [
+    "Daniel: a $29 starter tier",
+    "Sarah: an add-on per 1,000 tickets",
+    "Decision: test both"
+   ]
+  },
+  {
+   "n": 5,
+   "start": 2760,
+   "end": 3360,
+   "project": "pricing",
+   "title": "How the price test works, and what's open",
+   "see": [
+    "Win = beat 14% trial conversion",
+    "Price pages by 18 Nov",
+    "Free for existing customers? Undecided"
+   ]
+  },
+  {
+   "n": 6,
+   "start": 3360,
+   "end": 4020,
+   "project": "launch",
+   "title": "The three-week launch plan",
+   "see": [
+    "Week 1 beta, week 2 launch, week 3 review",
+    "A gate before each step",
+    "Agency deadlines"
+   ]
+  },
+  {
+   "n": 7,
+   "start": 4020,
+   "end": 4320,
+   "project": "launch",
+   "title": "What we measure, and recap",
+   "see": [
+    "Four numbers to track",
+    "Time saved needs a baseline",
+    "Recap"
+   ]
+  }
+ ],
+ "projects": [
+  {
+   "id": "insights",
+   "name": "Insights",
+   "aka": "Heard as \"In Sites\" in the captions",
+   "what": "A new feature that tells a support manager why tickets went up and what to do about it, on one screen. It goes to ten beta customers first.",
+   "status": "Scope locked to five steps. Beta opens 23 Nov if the connector is ready on 20 Nov.",
+   "lead": "Laura (design), Marco (engineering)",
+   "map": {
+    "badge": "New feature",
+    "blurb": "Explains why support tickets spike.",
+    "points": [
+     "Connect, spot, explain",
+     "Suggest a fix",
+     "Friday report",
+     "Upload screen for release notes"
+    ],
+    "open": "Free for existing customers?",
+    "cta": "See the manager's journey"
+   },
+   "blocks": [
+    {
+     "type": "steps",
+     "label": "Customer journey",
+     "title": "What Insights does for a support manager",
+     "note": "Chapter 2",
+     "items": [
+      {
+       "title": "Connect",
+       "sub": "The manager: links Zendesk and Jira in two minutes, no engineer.",
+       "t": 465,
+       "cols": [
+        {
+         "label": "Insights does",
+         "text": "Pulls in ticket history and release notes."
+        },
+        {
+         "label": "She gets",
+         "text": "A setup she can finish alone."
+        },
+        {
+         "label": "Why it matters",
+         "text": "No IT project before value."
+        }
+       ]
+      },
+      {
+       "title": "Spot",
+       "sub": "The manager: sees tickets about login up 40% since Thursday.",
+       "t": 550,
+       "cols": [
+        {
+         "label": "Insights does",
+         "text": "Finds spikes by topic, not just totals."
+        },
+        {
+         "label": "She gets",
+         "text": "The spike, the topic and the date it started."
+        },
+        {
+         "label": "Why it matters",
+         "text": "No more guessing in a spreadsheet."
+        }
+       ]
+      },
+      {
+       "title": "Explain",
+       "sub": "The manager: learns the spike came from one release.",
+       "t": 660,
+       "cols": [
+        {
+         "label": "Insights does",
+         "text": "Links the spike to the release note and the first ten customers who hit it."
+        },
+        {
+         "label": "She gets",
+         "text": "The why, with evidence."
+        },
+        {
+         "label": "Why it matters",
+         "text": "The hard part, and the reason to buy."
+        }
+       ]
+      },
+      {
+       "title": "Suggest",
+       "sub": "The manager: picks a fix.",
+       "t": 840,
+       "cols": [
+        {
+         "label": "Insights does",
+         "text": "Offers a help article, a reply macro, or a bug ticket with the evidence attached."
+        },
+        {
+         "label": "She gets",
+         "text": "A next step in one click."
+        },
+        {
+         "label": "Why it matters",
+         "text": "Insight turns into action."
+        }
+       ]
+      },
+      {
+       "title": "Report",
+       "sub": "The head of support: reads one page every Friday.",
+       "t": 990,
+       "cols": [
+        {
+         "label": "Insights does",
+         "text": "Sends what went up, why, and what the team did."
+        },
+        {
+         "label": "She gets",
+         "text": "Her Monday report, done for her."
+        },
+        {
+         "label": "Why it matters",
+         "text": "Leaders see the value every week."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "cards",
+     "label": "Inputs",
+     "title": "What customers plug in",
+     "t": 1290,
+     "e": 1470,
+     "intro": "Explain only works if Insights has these three things. Release notes are the risky one, so they get a simple upload screen.",
+     "items": [
+      {
+       "title": "Ticket history",
+       "text": "From Zendesk, connected in two minutes",
+       "t": 1290,
+       "icon": "chat"
+      },
+      {
+       "title": "Release notes",
+       "text": "Half live in Google Docs: paste a link or drop a file",
+       "t": 1420,
+       "icon": "doc"
+      },
+      {
+       "title": "Customer list",
+       "text": "With plan sizes, to rank who is hurt most",
+       "t": 1290,
+       "icon": "user"
+      }
+     ],
+     "quote": {
+      "quote": true,
+      "text": "So we give them a simple upload screen. Paste a link or drop a file. I'll design it this week.",
+      "t": 1470
+     }
+    },
+    {
+     "type": "pair",
+     "items": [
+      {
+       "label": "Trust",
+       "title": "Before customers connect",
+       "t": 1560,
+       "e": 1690,
+       "items": [
+        {
+         "title": "SOC 2 report",
+         "text": "The June report goes with every beta invite.",
+         "t": 1600
+        },
+        {
+         "title": "Data note",
+         "text": "One page on how we handle their data, by Friday.",
+         "t": 1690
+        }
+       ]
+      },
+      {
+       "label": "Parked",
+       "title": "Not in version 1",
+       "items": [
+        {
+         "title": "Custom dashboards",
+         "text": "Would add a month. Out of scope.",
+         "t": 1260
+        },
+        {
+         "title": "Sample-data mode",
+         "text": "Great idea, saved for version 2.",
+         "t": 1770
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pricing",
+   "name": "Pricing test",
+   "aka": "How to charge for Insights",
+   "what": "Sales and Finance disagree on how to charge for Insights. Instead of arguing, both options are tested on beta trials for two weeks.",
+   "status": "Two-week test starts with the beta. Price chosen in week 3.",
+   "lead": "Sarah (finance), Daniel (sales)",
+   "map": {
+    "badge": "Open debate",
+    "blurb": "Starter tier or usage add-on?",
+    "points": [
+     "Starter tier, $29 a month",
+     "Add-on per 1,000 tickets",
+     "Test both on trials",
+     "Win: beat 14% conversion"
+    ],
+    "open": "Free for existing customers?",
+    "cta": "See both sides"
+   },
+   "blocks": [
+    {
+     "type": "conflict",
+     "label": "Conflict resolution diagram",
+     "title": "Starter tier or usage add-on?",
+     "status": "Being tested",
+     "goal": "More paying teams without hurting margin",
+     "sides": [
+      {
+       "person": "daniel",
+       "position": "Add a starter tier at $29 a month for teams under 10 agents.",
+       "tp": 1860,
+       "because": "Small teams can't pay today's price, and usage pricing makes their bill unpredictable.",
+       "tb": 2140
+      },
+      {
+       "person": "sarah",
+       "position": "Sell Insights as an add-on, priced per 1,000 tickets.",
+       "tp": 1990,
+       "because": "A cheap tier pulls big customers down. Last year's discount plan slowed MRR growth for two quarters.",
+       "tb": 2240
+      }
+     ],
+     "way": "test both on beta trials for two weeks, then decide with the numbers.",
+     "tw": 2475
+    },
+    {
+     "type": "tiles",
+     "items": [
+      {
+       "label": "Option A",
+       "title": "Starter tier",
+       "list": [
+        "$29 a month",
+        "Teams under 10 agents",
+        "Simple, predictable"
+       ],
+       "t": 1860
+      },
+      {
+       "label": "Option B",
+       "title": "Usage add-on",
+       "list": [
+        "Per 1,000 tickets",
+        "On top of current plans",
+        "Protects margin"
+       ],
+       "t": 1990
+      },
+      {
+       "label": "Today",
+       "list": [
+        "Trial conversion 14%",
+        "Average deal $4,200 a year"
+       ],
+       "t": 2850
+      },
+      {
+       "label": "A price wins if",
+       "list": [
+        "Conversion beats 14%",
+        "Revenue per account does not drop",
+        "Measured after 30 days"
+       ],
+       "t": 2900
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "launch",
+   "name": "Launch plan",
+   "aka": "Three weeks, three gates",
+   "what": "Three weeks from beta to public launch, with a gate that must pass before each next step.",
+   "status": "Agreed. Week 1 starts with the beta on 23 Nov.",
+   "lead": "Emma",
+   "map": {
+    "badge": "3 weeks",
+    "blurb": "Beta, launch, review.",
+    "points": [
+     "Beta with 10 customers",
+     "Public launch with the agency",
+     "Review numbers, pick the price",
+     "Track four numbers"
+    ],
+    "cta": "See the 3-week plan"
+   },
+   "blocks": [
+    {
+     "type": "columns",
+     "label": "3-week plan",
+     "title": "Beta, public launch, then review",
+     "note": "Chapter 6",
+     "items": [
+      {
+       "label": "Week 1",
+       "title": "Beta with 10 customers",
+       "text": "Ten customers use Insights on their real tickets.",
+       "people": [
+        [
+         "marco",
+         "Ships the Zendesk connector"
+        ],
+        [
+         "laura",
+         "Runs onboarding calls"
+        ],
+        [
+         "olivia",
+         "Writes the launch message"
+        ]
+       ],
+       "gate": "Gate: no critical bugs, connector errors under 1%.",
+       "t": 3390
+      },
+      {
+       "label": "Week 2",
+       "title": "Public launch",
+       "text": "Campaign goes live with the agency.",
+       "people": [
+        [
+         "olivia",
+         "Runs the campaign"
+        ],
+        [
+         "tom",
+         "Agency: landing page by 27 Nov"
+        ],
+        [
+         "daniel",
+         "Team runs demos"
+        ],
+        [
+         "nadia",
+         "Team answers questions"
+        ]
+       ],
+       "gate": "Gate: 6 of 10 beta customers use it every week.",
+       "t": 3520
+      },
+      {
+       "label": "Week 3",
+       "title": "Review and price",
+       "text": "Read the price test and the usage numbers.",
+       "people": [
+        [
+         "all",
+         "Everyone reviews the numbers"
+        ]
+       ],
+       "gate": "Pick the price with the evidence.",
+       "t": 3660
+      }
+     ]
+    },
+    {
+     "type": "tiles",
+     "items": [
+      {
+       "label": "Track",
+       "title": "Weekly active teams",
+       "t": 4020
+      },
+      {
+       "label": "Track",
+       "title": "Tickets explained per week",
+       "t": 4020
+      },
+      {
+       "label": "Track",
+       "title": "Trial conversion",
+       "t": 4020
+      },
+      {
+       "label": "Track",
+       "title": "Time saved per manager",
+       "text": "Needs a baseline: ask beta customers first.",
+       "t": 4110
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "decisions": [
+  {
+   "text": "The beta opens on 23 Nov, if the connector is green on 20 Nov.",
+   "why": "The Zendesk connector is the only thing blocking the beta.",
+   "t": 100,
+   "kind": "Agreed",
+   "project": "insights"
+  },
+  {
+   "text": "Version 1 is five steps. No custom dashboards.",
+   "why": "Custom dashboards would add a month.",
+   "t": 1230,
+   "kind": "Agreed",
+   "project": "insights"
+  },
+  {
+   "text": "Sample-data mode waits for version 2.",
+   "why": "Keep version 1 small.",
+   "t": 1790,
+   "kind": "Agreed",
+   "project": "insights"
+  },
+  {
+   "text": "Test both prices on beta trials for two weeks.",
+   "why": "Sales and Finance want the same outcome, and nobody knows which price gets there.",
+   "t": 2475,
+   "kind": "Agreed",
+   "project": "pricing"
+  },
+  {
+   "text": "A price wins if it beats 14% trial conversion without lowering revenue per account.",
+   "why": "Agreed before the test, so the result can't be argued later.",
+   "t": 2900,
+   "kind": "Agreed",
+   "project": "pricing"
+  },
+  {
+   "text": "Launch in three weeks, with a gate before each step.",
+   "why": "Each step only starts when the previous one proves itself.",
+   "t": 3390,
+   "kind": "Agreed",
+   "project": "launch"
+  },
+  {
+   "text": "Track weekly active teams, tickets explained, conversion and time saved.",
+   "why": "These show whether Insights is used and worth paying for.",
+   "t": 4020,
+   "kind": "Agreed",
+   "project": "launch"
+  }
+ ],
+ "open": [
+  {
+   "q": "Do existing customers get Insights free for three months?",
+   "why": "Sarah leans no, but the renewal side wasn't in the room.",
+   "close": "Nadia's view from renewal calls, plus the cost.",
+   "who": [
+    "nadia",
+    "sarah"
+   ],
+   "next": "Decide by next week.",
+   "kind": "Decision",
+   "project": "pricing",
+   "t": 3060
+  },
+  {
+   "q": "Who answers AI questions on sales calls?",
+   "why": "There's no sales engineer yet, and Marco can't join every call.",
+   "close": "Name an owner, or plan a hire.",
+   "who": [
+    "emma"
+   ],
+   "next": "Raise at next week's sync.",
+   "kind": "Decision",
+   "project": "launch",
+   "t": 3300
+  },
+  {
+   "q": "Are customers' release notes clean enough to explain spikes?",
+   "why": "About half keep them in Google Docs.",
+   "close": "Try it on the beta customers' real notes.",
+   "who": [
+    "marco",
+    "laura"
+   ],
+   "next": "Check during week 1 of the beta.",
+   "kind": "Small test",
+   "project": "insights",
+   "t": 1420
+  },
+  {
+   "q": "How much time does Insights actually save?",
+   "why": "Nobody has measured the Monday report today.",
+   "close": "A baseline from each beta customer.",
+   "who": [
+    "laura"
+   ],
+   "next": "Ask on every onboarding call.",
+   "kind": "Research",
+   "project": "launch",
+   "t": 4110
+  }
+ ],
+ "tasks": [
+  {
+   "id": "T1",
+   "task": "Get the Zendesk connector green",
+   "owners": [
+    "marco"
+   ],
+   "project": "insights",
+   "priority": "now",
+   "due": "20 Nov",
+   "status": "Agreed",
+   "t": 78,
+   "top": true
+  },
+  {
+   "id": "T2",
+   "task": "Design the upload screen for release notes",
+   "owners": [
+    "laura"
+   ],
+   "project": "insights",
+   "priority": "now",
+   "due": "13 Nov",
+   "status": "Agreed",
+   "t": 1470,
+   "top": true
+  },
+  {
+   "id": "T3",
+   "task": "Write a one-page note on how we handle customer data",
+   "owners": [
+    "marco"
+   ],
+   "project": "insights",
+   "priority": "next",
+   "due": "13 Nov",
+   "status": "Agreed",
+   "t": 1690
+  },
+  {
+   "id": "T4",
+   "task": "Send the SOC 2 report with every beta invite",
+   "owners": [
+    "nadia"
+   ],
+   "project": "insights",
+   "priority": "next",
+   "due": "Before 23 Nov",
+   "status": "Proposed",
+   "t": 1600
+  },
+  {
+   "id": "T5",
+   "task": "Set up the two price pages for the test",
+   "owners": [
+    "sarah",
+    "olivia"
+   ],
+   "project": "pricing",
+   "priority": "now",
+   "due": "18 Nov",
+   "status": "Agreed",
+   "t": 2900,
+   "top": true
+  },
+  {
+   "id": "T6",
+   "task": "Decide if existing customers get Insights free",
+   "owners": [
+    "nadia",
+    "sarah"
+   ],
+   "project": "pricing",
+   "priority": "next",
+   "due": "Next week",
+   "status": "Open",
+   "t": 3220
+  },
+  {
+   "id": "T7",
+   "task": "Run onboarding calls with the 10 beta customers",
+   "owners": [
+    "laura"
+   ],
+   "project": "launch",
+   "priority": "next",
+   "due": "Week 1",
+   "status": "Agreed",
+   "t": 3390
+  },
+  {
+   "id": "T8",
+   "task": "Write the launch message",
+   "owners": [
+    "olivia"
+   ],
+   "project": "launch",
+   "priority": "next",
+   "due": "Week 1",
+   "status": "Agreed",
+   "t": 3390
+  },
+  {
+   "id": "T9",
+   "task": "Send the final screenshots to the agency",
+   "owners": [
+    "laura"
+   ],
+   "project": "launch",
+   "priority": "next",
+   "due": "25 Nov",
+   "status": "Agreed",
+   "t": 3880
+  },
+  {
+   "id": "T10",
+   "task": "Build the launch landing page",
+   "owners": [
+    "tom"
+   ],
+   "project": "launch",
+   "priority": "next",
+   "due": "27 Nov",
+   "status": "Agreed",
+   "t": 3880,
+   "external": true,
+   "top": true
+  },
+  {
+   "id": "T11",
+   "task": "Ask each beta customer how long their Monday report takes",
+   "owners": [
+    "laura"
+   ],
+   "project": "launch",
+   "priority": "next",
+   "due": "Week 1",
+   "status": "Agreed",
+   "t": 4180
+  },
+  {
+   "id": "T12",
+   "task": "Decide who answers AI questions on sales calls",
+   "owners": [],
+   "suggested": "emma",
+   "project": "launch",
+   "priority": "next",
+   "due": "TBC",
+   "status": "Needs owner",
+   "t": 3300
+  }
+ ],
+ "watch": [
+  {
+   "person": "olivia",
+   "ranges": [
+    [
+     2900,
+     2990,
+     "You set up the price pages with Sarah"
+    ],
+    [
+     3390,
+     3660,
+     "Launch plan: your message and the campaign"
+    ],
+    [
+     4020,
+     4180,
+     "What we will measure"
+    ]
+   ]
+  },
+  {
+   "person": "nadia",
+   "ranges": [
+    [
+     1560,
+     1690,
+     "The SOC 2 report goes with every invite"
+    ],
+    [
+     3060,
+     3300,
+     "Free for existing customers? You decide"
+    ],
+    [
+     3520,
+     3660,
+     "Week 2: your team answers questions"
+    ]
+   ]
+  },
+  {
+   "person": "daniel",
+   "ranges": [
+    [
+     3360,
+     4020,
+     "The launch plan you missed"
+    ],
+    [
+     4230,
+     4320,
+     "Recap"
+    ]
+   ]
+  },
+  {
+   "person": "tom",
+   "ranges": [
+    [
+     3520,
+     3660,
+     "Week 2 campaign with your agency"
+    ],
+    [
+     3880,
+     3960,
+     "Your deadlines: 25 and 27 Nov"
+    ]
+   ]
+  },
+  {
+   "person": "sarah",
+   "ranges": [
+    [
+     78,
+     210,
+     "Beta date and the connector"
+    ],
+    [
+     1230,
+     1290,
+     "The scope decision"
+    ]
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "text": "Three of the biggest accounts already asked for Insights.",
+   "t": 125
+  },
+  {
+   "text": "About half of customers keep release notes in Google Docs.",
+   "t": 1420
+  },
+  {
+   "text": "Last year's discount plan slowed MRR growth for two quarters.",
+   "t": 2240
+  },
+  {
+   "text": "Sales may still offer the starter price to anyone who asks during the test.",
+   "t": 2650
+  },
+  {
+   "text": "Daniel left at 49:50. Sarah joined at 30:05.",
+   "t": 2990
+  }
+ ],
+ "spelling": [
+  {
+   "heard": "In Sites",
+   "fix": "Insights",
+   "sure": true,
+   "meaning": "The new feature's name",
+   "example": "What In Sites does at launch",
+   "t": 5
+  },
+  {
+   "heard": "Fern way",
+   "fix": "Fernway",
+   "sure": true,
+   "meaning": "Company name",
+   "example": "Big one for Fern way today",
+   "t": 5
+  },
+  {
+   "heard": "Zen desk",
+   "fix": "Zendesk",
+   "sure": true,
+   "meaning": "The help desk tool",
+   "example": "We're blocked on one thing, the Zen desk connector",
+   "t": 41
+  },
+  {
+   "heard": "Jura",
+   "fix": "Jira",
+   "sure": true,
+   "meaning": "The issue tracker",
+   "example": "she connects Zen desk and Jura",
+   "t": 465
+  },
+  {
+   "heard": "SOC two",
+   "fix": "SOC 2",
+   "sure": true,
+   "meaning": "Security report big customers ask for",
+   "example": "ask about SOC two before they connect anything",
+   "t": 1560
+  },
+  {
+   "heard": "M R R",
+   "fix": "MRR",
+   "sure": true,
+   "meaning": "Monthly recurring revenue",
+   "example": "slowed M R R growth for two quarters",
+   "t": 2240
+  },
+  {
+   "heard": "Nadya",
+   "fix": "Nadia?",
+   "sure": false,
+   "meaning": "Person's name. Check the spelling",
+   "example": "Olivia and Nadya can't join today",
+   "t": 210
+  }
+ ],
+ "taskNote": "",
+ "quiz": {
+  "pass": 5,
+  "minutes": 2,
+  "questions": [
+   {
+    "id": "q1",
+    "q": "When does the beta open?",
+    "options": [
+     "On 20 Nov, no matter what",
+     "On 23 Nov, if the Zendesk connector is green on 20 Nov",
+     "At the public launch",
+     "After the price test"
+    ],
+    "answer": 1,
+    "why": "The connector is the only blocker, so the date depends on it.",
+    "review": {
+     "tab": "decisions",
+     "label": "Decisions",
+     "t": 100
+    }
+   },
+   {
+    "id": "q2",
+    "q": "What's in Insights version 1?",
+    "options": [
+     "Custom dashboards",
+     "Connect, spot, explain, suggest and report",
+     "Only the Friday report",
+     "Sample-data mode"
+    ],
+    "answer": 1,
+    "why": "Five steps only. Dashboards add a month; sample data waits for version 2.",
+    "review": {
+     "tab": "projects",
+     "proj": "insights",
+     "label": "Projects: Insights",
+     "t": 1230
+    }
+   },
+   {
+    "id": "q3",
+    "q": "How will Insights be priced?",
+    "options": [
+     "A $29 starter tier",
+     "A usage add-on",
+     "Both are tested on trials for two weeks, then we choose",
+     "Free for everyone"
+    ],
+    "answer": 2,
+    "why": "Sales and Finance disagree, so both prices get tested.",
+    "review": {
+     "tab": "projects",
+     "proj": "pricing",
+     "label": "Projects: Pricing test",
+     "t": 2475
+    }
+   },
+   {
+    "id": "q4",
+    "q": "What makes a price the winner?",
+    "options": [
+     "More sign-ups of any kind",
+     "Beating 14% trial conversion without lowering revenue per account",
+     "Daniel's approval",
+     "Fifty new customers"
+    ],
+    "answer": 1,
+    "why": "The success measure was agreed before the test starts.",
+    "review": {
+     "tab": "decisions",
+     "label": "Decisions",
+     "t": 2900
+    }
+   },
+   {
+    "id": "q5",
+    "q": "Who sets up the two price pages, and by when?",
+    "options": [
+     "Daniel, by 20 Nov",
+     "Sarah and Olivia, by 18 Nov",
+     "Laura, this week",
+     "The agency, by 27 Nov"
+    ],
+    "answer": 1,
+    "why": "Emma asked Sarah to do it with Olivia; Sarah said 18 Nov.",
+    "review": {
+     "tab": "tasks",
+     "label": "Tasks",
+     "t": 2900
+    }
+   },
+   {
+    "id": "q6",
+    "q": "Do existing customers get Insights free for three months?",
+    "options": [
+     "Yes, it was agreed",
+     "Not decided: Nadia and Sarah decide next week",
+     "No, they pay from day one",
+     "The idea was dropped"
+    ],
+    "answer": 1,
+    "why": "It's still open, and the renewal side needs a say.",
+    "review": {
+     "tab": "decisions",
+     "label": "Decisions: still open",
+     "t": 3060,
+     "e": 3220
+    }
+   }
+  ]
+ }
+}

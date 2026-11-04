@@ -1,0 +1,20 @@
+{
+ "about": "Words the meeting captions get wrong. 'fixes' are applied to every clean transcript. 'ask' are guesses the skill confirms with you first. 'keep' are real words that are not errors (names, other languages). 'filler' are extra noise words to drop. The skill adds to this file after each spelling check. The Fernway entries are from the fictional example; replace them with your own.",
+ "fixes": [
+  {"heard": "In Sites", "fix": "Insights"},
+  {"heard": "Fern way", "fix": "Fernway"},
+  {"heard": "Zen desk", "fix": "Zendesk"},
+  {"heard": "Jura", "fix": "Jira"},
+  {"heard": "SOC two", "fix": "SOC 2"},
+  {"heard": "M R R", "fix": "MRR"},
+  {"heard": "draught", "fix": "draft"},
+  {"heard": "draughts", "fix": "drafts"},
+  {"heard": "cheque", "fix": "check"},
+  {"heard": "cheques", "fix": "checks"}
+ ],
+ "ask": [
+  {"heard": "Nadya", "guess": "Nadia", "note": "Person's name, check the spelling"}
+ ],
+ "keep": [],
+ "filler": []
+}

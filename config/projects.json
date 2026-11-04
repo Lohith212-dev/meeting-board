@@ -1,0 +1,8 @@
+{
+ "about": "EXAMPLE (fictional). Projects the skill already knows. At the start of each run it lists these, plus any new ones it spots in the transcript, and asks which are active. Tasks are tagged to active projects. Update 'status' after each run.",
+ "projects": [
+  {"id": "insights", "name": "Insights", "aka": ["In Sites"], "status": "active", "what": "New feature: explains why support tickets spike"},
+  {"id": "pricing", "name": "Pricing test", "aka": ["pricing"], "status": "active", "what": "Starter tier versus usage add-on"},
+  {"id": "launch", "name": "Launch plan", "aka": ["launch"], "status": "active", "what": "Three weeks from beta to public launch"}
+ ]
+}

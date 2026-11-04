@@ -1,0 +1,14 @@
+{
+ "about": "EXAMPLE TEAM (fictional company 'Fernway'). Replace with your own people. The skill uses this to name speakers, show titles, decide who should watch which part, and find photos in photos/<id>.webp (square, about 120px). People without a photo get an initials circle.",
+ "photos_dir": "photos",
+ "people": [
+  {"id": "emma", "name": "Emma Clarke", "title": "CEO", "aliases": ["Emma"], "cares_about": "Every decision, priorities, dates"},
+  {"id": "laura", "name": "Laura Bennett", "title": "Product Designer", "aliases": ["Laura"], "cares_about": "Product scope, user experience, onboarding"},
+  {"id": "marco", "name": "Marco Rossi", "title": "Head of Engineering", "aliases": ["Marco"], "cares_about": "What ships when, technical risk, security"},
+  {"id": "daniel", "name": "Daniel Reyes", "title": "Sales Lead", "aliases": ["Daniel"], "cares_about": "Pricing, demos, what customers ask for"},
+  {"id": "sarah", "name": "Sarah Mitchell", "title": "Head of Finance", "aliases": ["Sarah"], "cares_about": "Pricing, margin, revenue numbers"},
+  {"id": "olivia", "name": "Olivia Hart", "title": "Marketing Lead", "aliases": ["Olivia"], "cares_about": "Launch message, campaigns, price pages"},
+  {"id": "nadia", "name": "Nadia Petrova", "title": "Customer Success Lead", "aliases": ["Nadia", "Nadya"], "cares_about": "Existing customers, renewals, support questions"},
+  {"id": "tom", "name": "Tom Becker", "title": "Launch agency (external)", "aliases": ["Tom"], "cares_about": "Campaign deadlines, assets"}
+ ]
+}
