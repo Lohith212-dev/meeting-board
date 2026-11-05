@@ -56,7 +56,7 @@ python "<skill>/scripts/build_board.py" --data "<work>/data.json" --transcript "
 Needs `openpyxl` (`python -m pip install openpyxl`). Fix any WARNING it prints (unknown speakers → add aliases to `team.json` or `people`).
 
 ### 6. Check it before showing anyone
-Serve the folder (`python -m http.server` in `<work>`) and open it with a browser tool if one is available: click every tab, hover one timestamp, open one side panel, answer the quiz once, switch a project. No console errors, no empty tabs. If no browser tool exists, at least run the page script through `node -e "new Function(...)"` to catch syntax errors.
+Serve the folder (`python -m http.server` in `<work>`) and open it with a browser tool if one is available: click every tab, hover one timestamp, open one side panel, answer the quiz once, switch a project, press "Copy as Markdown" on the Transcript tab. No console errors, no empty tabs. If no browser tool exists, at least run the page script through `node -e "new Function(...)"` to catch syntax errors.
 
 ### 7. Publish and hand over
 - Publish `board.html` as an Artifact with these capabilities (they power the Excel download and the saved quiz results):
@@ -71,7 +71,7 @@ Serve the folder (`python -m http.server` in `<work>`) and open it with a browse
 |---|---|
 | `scripts/extract_transcript.py` | .docx / .vtt → `transcript.txt` (`Name   m:ss text` lines) |
 | `scripts/build_board.py` | data.json + transcript → `board.html` + Excel (cleans transcript, maps speakers, embeds photos) |
-| `assets/board-template.html` | The board app (Vercel Geist look, tabs, hover previews, side panel, quiz, Excel download). Do not edit per meeting; all content comes from data.json |
+| `assets/board-template.html` | The board app (Vercel Geist look, tabs, hover previews, side panel, quiz, Excel download, transcript copy/download as Markdown). Do not edit per meeting; all content comes from data.json |
 | `references/data-schema.md` | Every field of data.json, with types and an example |
 | `references/analysis-guide.md` | How to chapter, summarise, pick visuals, write decisions, open questions, watch lists and quiz questions; the thinking frameworks |
 | `references/publishing.md` | Artifact capabilities, sharing levels, the Teams message template |

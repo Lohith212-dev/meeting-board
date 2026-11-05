@@ -26,6 +26,10 @@ Then:
 4. Confirm the spelling fixes it lists.
 5. You get the board link, the Excel file, and a Teams message to paste.
 
+On the board's Transcript tab, **Copy as Markdown** and **Download transcript** give you the whole clean transcript as Markdown (a `.md` file), with chapters, timestamps and speaker names.
+
+**Claude Desktop or claude.ai (no Claude Code):** zip the `meeting-board` folder, then upload it in Settings → Capabilities → Skills (turn on "Code execution and file creation" first). Attach the transcript in a chat and ask for a meeting board. Changes Claude makes to `config/` there are not kept between chats, so edit `team.json`, `projects.json` and `glossary.json` before zipping.
+
 Share the board with your team at **Contributor** access, so everyone's check result is saved and you can see who has understood.
 
 ## Make it yours

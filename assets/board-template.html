@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: a meeting app in Vercel Geist. Sticky header (title, recording, Excel) + sticky tabs. Overview lands first; Transcript, Projects, Decisions, Tasks, Watch list, Review hold the detail. Timestamps preview their transcript on hover; "Read full part" opens a side panel with only that part highlighted. */
+/* Layout: a meeting app in Vercel Geist. Sticky header (title, recording, Excel) + sticky tabs. Overview lands first; Transcript, Projects, Decisions, Tasks, Watch list, Review hold the detail. The Transcript tab copies or downloads the whole clean transcript as Markdown. Timestamps preview their transcript on hover; "Read full part" opens a side panel with only that part highlighted. */
 :root{
   --bg:#ffffff; --bg2:#fafafa; --bg3:#f2f2f2; --fg:#0a0a0a; --fg2:#3d3d3d; --muted:#666666; --border:#eaeaea; --border2:#d4d4d4;
   --accent:#0a0a0a; --accent-fg:#ffffff; --hl:#fff6d6; --hl-line:#f5b400; --avbg:#e6e6e6; --dot-fg:#ffffff;
@@ -150,6 +150,8 @@ details.meta > summary .muted{flex:1 1 300px;min-width:0}
 .tx-nav nav button{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;text-align:left;border:0;background:none;padding:7px 8px;border-radius:var(--r);cursor:pointer;font-size:13px;line-height:1.35;color:var(--fg2)}
 .tx-nav nav button:hover{background:var(--bg2);color:var(--fg)}
 .tx-nav nav button small{display:block;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.tx-acts{display:flex;gap:8px;flex-wrap:wrap}
+.tx-acts .btn{flex:1 1 auto;justify-content:center}
 .cleanstat{font-size:12.5px;color:var(--muted);border:1px dashed var(--border2);border-radius:var(--r);padding:8px 10px;line-height:1.45}
 .chap{display:grid;gap:4px;margin-bottom:36px}
 .chap-h{display:grid;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--border);margin-bottom:6px}
@@ -442,6 +444,7 @@ const durL=(()=>{const s=M.duration,h=Math.floor(s/3600),m=Math.floor(s%3600/60)
 const chOf=t=>CH.find(c=>t>=c.start&&t<c.end)||CH[CH.length-1];
 const ST={'Agreed':'ok','Proposed':'mute','Idea':'mute','Open':'warn','Not started':'crit','Needs owner':'warn'};
 const DL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>';
+const COPY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>';
 const PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
 const toastEl=$('#toast');let tt;function toast(m){toastEl.textContent=m;toastEl.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toastEl.hidden=true,3000)}
 
@@ -513,11 +516,34 @@ $('#p-overview').innerHTML=`
 const uRow=(u,i,extra)=>`<div class="u${extra||''}" data-i="${i}">${ts(u.s)}${av(u.sp)}<div><span class="who">${esc(first(u.sp))}</span><p class="txt">${esc(u.text)}</p></div></div>`;
 $('#p-transcript').innerHTML=`<div class="tx">
   <div class="tx-nav"><input class="search" id="q" type="search" placeholder="Search the transcript" aria-label="Search the transcript">
+    <div class="tx-acts"><button class="btn" type="button" id="mdCopy" title="Copy the whole clean transcript as Markdown">${COPY}Copy as Markdown</button><button class="btn" type="button" id="mdSave" title="Download the whole clean transcript as a .md file">${DL}Download transcript</button></div>
     <nav>${CH.map(c=>`<button type="button" data-jump="${c.n}"><span class="num ${pc(c.project)}">${c.n}</span><span>${esc(c.title)}<small>${fmt(c.start)}</small></span></button>`).join('')}</nav>
     <div class="cleanstat">Cleaned: ${C.lines_before} caption lines became ${C.lines_after} readable turns. Filler like "Mm" and "Yeah" removed, ${C.fixes} spelling fixes applied. The original stays in Teams.</div></div>
   <div id="txbody">${CH.map(c=>{const list=U.map((u,i)=>[u,i]).filter(([u])=>u.s>=c.start&&u.s<c.end);return `<div class="chap" id="ch-${c.n}"><div class="chap-h"><div class="row"><span class="num ${pc(c.project)}">${c.n}</span><span class="tag ${pc(c.project)}">${esc(PJ[c.project].name)}</span><span class="mono muted" style="font-size:12.5px">${fmt(c.start)} – ${fmt(c.end)}</span>${ts(c.start,c.end)}</div><h2>${esc(c.title)}</h2>${c.note?`<p class="muted" style="font-size:13px">${esc(c.note)}</p>`:''}<ul>${c.see.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>${list.map(([u,i])=>uRow(u,i).replace('class="u"',`class="u" id="u-${i}"`)).join('')}</div>`}).join('')}</div>
 </div>`;
 $$('[data-jump]').forEach(b=>b.addEventListener('click',()=>document.getElementById('ch-'+b.dataset.jump).scrollIntoView({block:'start'})));
+/* transcript as Markdown: always the whole clean transcript, whatever the search shows */
+function txMd(){
+  const L=[`# ${M.title} - transcript`,'',`**Date:** ${M.date}${M.start?', '+M.start:''} · **Duration:** ${durL} · **Where:** ${M.platform||'Teams'}${M.place?', '+M.place:''}`,'',`**People:** ${D.people.map(p=>p.name+(p.title?` (${p.title})`:'')+(p.attended?'':', mentioned')).join('; ')}`];
+  if(M.agenda)L.push('',`**Agenda:** ${M.agenda}`);
+  if(M.recording)L.push('',`**Recording:** ${M.recording}`);
+  L.push('',`*Clean transcript: ${C.lines_before} caption lines became ${C.lines_after} turns. Filler removed, ${C.fixes} spelling fixes applied. The original stays in ${M.platform||'Teams'}.*`);
+  CH.forEach(c=>{L.push('',`## ${c.n}. ${c.title} (${fmt(c.start)} - ${fmt(c.end)})`,'',`*Project: ${PJ[c.project]?PJ[c.project].name:c.project}*`);
+    if(c.note)L.push('',c.note);
+    if(c.see&&c.see.length)L.push('',...c.see.map(s=>'- '+s));
+    U.filter(u=>u.s>=c.start&&u.s<c.end).forEach(u=>L.push('',`**[${fmt(u.s)}] ${P[u.sp]?P[u.sp].name:u.sp}:** ${u.text}`))});
+  return L.join('\n')+'\n';
+}
+const mdName=()=>((M.xlsx||'').replace(/\s*-\s*tasks\.xlsx$/i,'').replace(/\.xlsx$/i,'')||`${M.title} ${M.date}`).replace(/[\\/:*?"<>|]+/g,'-').trim()+' - transcript.md';
+$('#mdCopy').addEventListener('click',async()=>{const md=txMd();let ok=false;
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(md);ok=true}}catch(e){ok=false}
+  if(!ok){try{const ta=document.createElement('textarea');ta.value=md;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(ta);ta.select();ok=document.execCommand('copy');ta.remove()}catch(e){ok=false}}
+  toast(ok?'Transcript copied as Markdown':'Copy is blocked in this view. Use Download transcript instead.')});
+$('#mdSave').addEventListener('click',async()=>{const blob=new Blob([txMd()],{type:'text/markdown;charset=utf-8'}),name=mdName();
+  let d=null;try{d=dlP?await dlP:null}catch(e){d=null}
+  if(d){try{await d.save({filename:name,data:blob});toast('Transcript saved');return}catch(e){if(e&&e.code==='declined')return}}
+  try{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);toast('Transcript downloaded')}
+  catch(e){toast('Download is not available in this view. Use Copy as Markdown instead.')}});
 $('#q').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();const re=q?new RegExp(reEsc(q),'gi'):null;
   $$('#txbody .u').forEach(r=>{const u=U[+r.dataset.i];const hit=!q||u.text.toLowerCase().includes(q)||P[u.sp].name.toLowerCase().includes(q);r.hidden=!hit;const p=r.querySelector('.txt');if(q&&hit)p.innerHTML=esc(u.text).replace(re,m=>`<mark>${m}</mark>`);else p.textContent=u.text});
   $$('#txbody .chap').forEach(c=>{c.hidden=!!q&&!c.querySelector('.u:not([hidden])')})});
