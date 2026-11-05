@@ -10,104 +10,83 @@
   "duration": 4320,
   "agenda": "Insights launch scope, pricing, and the launch plan",
   "recording": "",
-  "transcript": "Weekly Product Sync.docx"
+  "transcript": "Weekly Product Sync.docx",
+  "reader": "olivia",
+  "coverage": [
+   {
+    "start": 0,
+    "end": 4320,
+    "quality": "good"
+   }
+  ]
  },
  "people": [
   {
    "id": "emma",
    "name": "Emma Clarke",
    "title": "CEO",
-   "attended": true
+   "attended": true,
+   "why": "CEO. Ran the meeting and made the calls."
   },
   {
    "id": "laura",
    "name": "Laura Bennett",
    "title": "Product Designer",
-   "attended": true
+   "attended": true,
+   "why": "Product designer. Showed the five steps and suggested the price test."
   },
   {
    "id": "marco",
    "name": "Marco Rossi",
    "title": "Head of Engineering",
-   "attended": true
+   "attended": true,
+   "why": "Head of engineering. Owns the connector that sets the beta date."
   },
   {
    "id": "daniel",
    "name": "Daniel Reyes",
    "title": "Sales Lead",
    "attended": true,
-   "note": "Left at 49:50"
+   "note": "Left at 49:50",
+   "why": "Sales lead. Wants a cheap starter tier."
   },
   {
    "id": "sarah",
    "name": "Sarah Mitchell",
    "title": "Head of Finance",
    "attended": true,
-   "note": "Joined at 30:05"
+   "note": "Joined at 30:05",
+   "why": "Head of finance. Wants usage pricing instead."
   },
   {
    "id": "olivia",
    "name": "Olivia Hart",
-   "title": "Marketing Lead"
+   "title": "Marketing Lead",
+   "why": "Marketing lead. Missed it; sets up price pages and the launch message."
   },
   {
    "id": "nadia",
    "name": "Nadia Petrova",
-   "title": "Customer Success Lead"
+   "title": "Customer Success Lead",
+   "why": "Customer success lead. Missed it; decides about free access for existing customers."
   },
   {
    "id": "tom",
    "name": "Tom Becker",
    "title": "Launch agency (external)",
-   "external": true
+   "external": true,
+   "why": "Launch agency. Missed it; builds the landing page."
   }
  ],
- "mapRoot": {
-  "title": "Fernway",
-  "sub": "Ship Insights small, price it with evidence"
+ "context": {
+  "before": "Fernway is building Insights, a feature that explains why support tickets spike. The beta build is ready, but scope, price and the launch plan were still open.",
+  "call": "Emma ran the weekly sync. Laura walked through what a support manager sees, then Daniel and Sarah argued two ways to price it.",
+  "question": "What does Insights do at launch, how do we price it, and what is the launch plan?",
+  "decided": "Beta on 23 Nov with five steps only. Test both prices for two weeks. Launch in three weeks, with a gate before each step."
  },
- "mapIntro": "One feature, one pricing question, one plan. Pick a project for the detail.",
- "links": [
-  {
-   "from": "insights",
-   "to": "pricing",
-   "label": "needs a price from"
-  },
-  {
-   "from": "pricing",
-   "to": "launch",
-   "label": "is decided in week 3 of"
-  }
- ],
  "summary": {
   "lead": "Ship Insights small, price it with evidence.",
-  "accent": "The beta opens on 23 Nov with five steps only. Both prices get tested for two weeks before anyone chooses.",
-  "points": [
-   {
-    "project": "insights",
-    "t": 100,
-    "title": "Beta on 23 Nov",
-    "text": "If the Zendesk connector is ready by 20 Nov. Ten customers first."
-   },
-   {
-    "project": "insights",
-    "t": 1230,
-    "title": "Scope is locked",
-    "text": "Connect, spot, explain, suggest, report. No custom dashboards in version 1."
-   },
-   {
-    "project": "pricing",
-    "t": 2475,
-    "title": "Test both prices",
-    "text": "Starter tier versus usage add-on, two weeks on beta trials. The winner must beat 14% conversion."
-   },
-   {
-    "project": "launch",
-    "t": 3390,
-    "title": "Three-week launch",
-    "text": "Beta, public launch with the agency, then review the numbers and pick the price."
-   }
-  ]
+  "accent": "The beta opens on 23 Nov with five steps only. Both prices get tested for two weeks before anyone chooses."
  },
  "chapters": [
   {
@@ -120,6 +99,21 @@
     "Beta date depends on the Zendesk connector",
     "Three big accounts already asked for Insights",
     "Who is missing today"
+   ],
+   "t": 100,
+   "summary": "Emma sets the three things to decide. The only blocker for the beta is the Zendesk connector: if it is ready by 20 Nov, the beta opens on 23 Nov. Three big accounts already asked for Insights.",
+   "pills": [
+    {
+     "text": "Agreed",
+     "kind": "ok"
+    }
+   ],
+   "quotes": [
+    {
+     "sp": "emma",
+     "t": 100,
+     "text": "Beta opens on the twenty-third, as long as the connector is green on the twentieth."
+    }
    ]
   },
   {
@@ -132,7 +126,23 @@
     "Five steps: connect, spot, explain, suggest, report",
     "Explaining why is the hard part",
     "Scope locked, no custom dashboards"
-   ]
+   ],
+   "t": 420,
+   "summary": "Laura walks through a support manager's Monday: connect, spot the spike, explain why, suggest a fix, send a Friday report. Marco says explaining why is the hard part. Emma locks version 1 to these five steps.",
+   "pills": [
+    {
+     "text": "Scope agreed",
+     "kind": "ok"
+    }
+   ],
+   "quotes": [
+    {
+     "sp": "emma",
+     "t": 1090,
+     "text": "So the promise is, from tickets went up, to here's why and what to do, on one screen."
+    }
+   ],
+   "onscreen": "Laura's prototype of the five steps."
   },
   {
    "n": 3,
@@ -144,6 +154,21 @@
     "Ticket history, release notes, customer list",
     "Upload screen for messy release notes",
     "SOC 2 report and a data note"
+   ],
+   "t": 1290,
+   "summary": "For the explain step, customers plug in ticket history, release notes and their customer list. Release notes are messy, so Laura will design an upload screen. Security needs the SOC 2 report and a data note. Sample-data mode waits for version 2.",
+   "pills": [
+    {
+     "text": "Agreed",
+     "kind": "ok"
+    }
+   ],
+   "quotes": [
+    {
+     "sp": "marco",
+     "t": 1420,
+     "text": "About half our customers keep them in Google Docs, not in Jira."
+    }
    ]
   },
   {
@@ -156,6 +181,26 @@
     "Daniel: a $29 starter tier",
     "Sarah: an add-on per 1,000 tickets",
     "Decision: test both"
+   ],
+   "t": 1860,
+   "summary": "Daniel wants a $29 starter tier for small teams. Sarah wants an add-on priced per 1,000 tickets, because cheap tiers pulled revenue down last year. Laura suggests testing both, and Emma agrees.",
+   "pills": [
+    {
+     "text": "Test both: agreed",
+     "kind": "ok"
+    }
+   ],
+   "quotes": [
+    {
+     "sp": "emma",
+     "t": 2340,
+     "text": "You both want the same thing. More paying teams without hurting margin."
+    },
+    {
+     "sp": "laura",
+     "t": 2430,
+     "text": "So what if we test both? Half the beta trials see the starter tier, half see the add-on."
+    }
    ]
   },
   {
@@ -168,6 +213,25 @@
     "Win = beat 14% trial conversion",
     "Price pages by 18 Nov",
     "Free for existing customers? Undecided"
+   ],
+   "t": 2900,
+   "summary": "A price wins if it beats today's 14% trial conversion without lowering revenue per account. Sarah and Olivia set up both price pages by 18 Nov. Free access for existing customers, and who answers AI questions on sales calls, are still open.",
+   "pills": [
+    {
+     "text": "Agreed",
+     "kind": "ok"
+    },
+    {
+     "text": "2 still open",
+     "kind": "warn"
+    }
+   ],
+   "quotes": [
+    {
+     "sp": "emma",
+     "t": 2900,
+     "text": "So a price wins if it beats fourteen percent without lowering revenue per account."
+    }
    ]
   },
   {
@@ -180,6 +244,21 @@
     "Week 1 beta, week 2 launch, week 3 review",
     "A gate before each step",
     "Agency deadlines"
+   ],
+   "t": 3390,
+   "summary": "Three weeks: beta, public launch with Tom's agency, then review the numbers and pick the price. Each step has a gate: no critical bugs before week 2, six of ten customers using it weekly before week 3.",
+   "pills": [
+    {
+     "text": "Agreed",
+     "kind": "ok"
+    }
+   ],
+   "quotes": [
+    {
+     "sp": "laura",
+     "t": 3810,
+     "text": "Gate before week three. At least six of the ten beta customers use it every week."
+    }
    ]
   },
   {
@@ -192,7 +271,156 @@
     "Four numbers to track",
     "Time saved needs a baseline",
     "Recap"
+   ],
+   "t": 4020,
+   "summary": "Four numbers to track. Time saved needs a baseline, so Laura adds a question to the onboarding calls. Emma recaps.",
+   "pills": [
+    {
+     "text": "Agreed",
+     "kind": "ok"
+    }
+   ],
+   "quotes": [
+    {
+     "sp": "emma",
+     "t": 4230,
+     "text": "Recap. Beta on the twenty-third. Five steps only. A two-week price test."
+    }
    ]
+  }
+ ],
+ "picture": {
+  "title": "Insights in one picture",
+  "sub": "What customers plug in, and what a support manager gets back.",
+  "confidence": 95,
+  "top": {
+   "label": "customers plug in",
+   "items": [
+    "Ticket history",
+    "Release notes",
+    "Customer list"
+   ]
+  },
+  "hub": {
+   "title": "Insights",
+   "sub": "Connects in two minutes, no engineer needed"
+  },
+  "users": [
+   {
+    "title": "Spot",
+    "t": 550,
+    "items": [
+     "Finds the spike",
+     "Login tickets up 40% since Thursday's release"
+    ]
+   },
+   {
+    "title": "Explain",
+    "t": 660,
+    "items": [
+     "Links it to the release note",
+     "Names the first 10 customers hit"
+    ]
+   },
+   {
+    "title": "Suggest",
+    "t": 840,
+    "items": [
+     "A help article",
+     "A reply macro",
+     "A bug ticket with evidence"
+    ]
+   },
+   {
+    "title": "Report",
+    "t": 990,
+    "note": "Goes to the head of support",
+    "items": [
+     "Every Friday, one page",
+     "What went up, why, what we did"
+    ]
+   }
+  ],
+  "later": {
+   "text": "Version 2: a try-with-sample-data button",
+   "t": 1790
+  }
+ },
+ "terms": [
+  {
+   "term": "Insights",
+   "meaning": "The new Fernway feature that explains why support tickets spike.",
+   "heard": [
+    "In Sites"
+   ]
+  },
+  {
+   "term": "Zendesk",
+   "meaning": "The help desk tool customers connect. Its connector sets the beta date.",
+   "heard": [
+    "Zen desk"
+   ]
+  },
+  {
+   "term": "Jira",
+   "meaning": "The issue tracker where many teams keep release notes.",
+   "heard": [
+    "Jura"
+   ]
+  },
+  {
+   "term": "SOC 2",
+   "meaning": "A security report bigger customers ask for before connecting their data.",
+   "heard": [
+    "SOC two"
+   ]
+  },
+  {
+   "term": "MRR",
+   "meaning": "Monthly recurring revenue.",
+   "heard": [
+    "M R R"
+   ]
+  },
+  {
+   "term": "trial conversion",
+   "meaning": "The share of free trials that become paying customers. Today it is 14%."
+  },
+  {
+   "term": "starter tier",
+   "meaning": "Daniel's idea: $29 a month for teams under 10 agents."
+  },
+  {
+   "term": "add-on",
+   "meaning": "Sarah's idea: Insights sold on top of the plan, priced per 1,000 tickets."
+  },
+  {
+   "term": "gate",
+   "meaning": "A check that must pass before the next launch step starts.",
+   "flag": true,
+   "note": "Used in a specific sense in this meeting"
+  }
+ ],
+ "stages": [
+  {
+   "name": "Idea",
+   "means": "Talked about, nothing agreed"
+  },
+  {
+   "name": "Shaping",
+   "means": "Scope and approach being agreed"
+  },
+  {
+   "name": "Planned",
+   "means": "Agreed, with owners and dates"
+  },
+  {
+   "name": "Building",
+   "means": "Work under way"
+  },
+  {
+   "name": "Live",
+   "means": "Customers use it"
   }
  ],
  "projects": [
@@ -391,7 +619,9 @@
       }
      ]
     }
-   ]
+   ],
+   "stage": "Building",
+   "next": "Open the beta on 23 Nov with 10 customers."
   },
   {
    "id": "pricing",
@@ -480,7 +710,9 @@
       }
      ]
     }
-   ]
+   ],
+   "stage": "Planned",
+   "next": "Start the two-week test when the beta opens."
   },
   {
    "id": "launch",
@@ -594,9 +826,28 @@
       }
      ]
     }
-   ]
+   ],
+   "stage": "Planned",
+   "next": "Start week 1 with the beta on 23 Nov."
   }
  ],
+ "links": [
+  {
+   "from": "insights",
+   "to": "pricing",
+   "label": "needs a price from"
+  },
+  {
+   "from": "pricing",
+   "to": "launch",
+   "label": "is decided in week 3 of"
+  }
+ ],
+ "mapRoot": {
+  "title": "Fernway",
+  "sub": "Ship Insights small, price it with evidence"
+ },
+ "mapIntro": "One feature, one pricing question, one plan. Pick a project for the detail.",
  "decisions": [
   {
    "text": "The beta opens on 23 Nov, if the connector is green on 20 Nov.",
@@ -712,7 +963,13 @@
    "due": "20 Nov",
    "status": "Agreed",
    "t": 78,
-   "top": true
+   "top": true,
+   "why": "The beta can only open on 23 Nov if the connector works.",
+   "done": "The connector is green on 20 Nov.",
+   "extra": {
+    "label": "Blocks",
+    "text": "The beta on 23 Nov"
+   }
   },
   {
    "id": "T2",
@@ -725,7 +982,13 @@
    "due": "13 Nov",
    "status": "Agreed",
    "t": 1470,
-   "top": true
+   "top": true,
+   "why": "About half of customers keep release notes in Google Docs, so they need an easy way in.",
+   "done": "Customers can paste a link or drop a file.",
+   "extra": {
+    "label": "Blocks",
+    "text": "The explain step for messy notes"
+   }
   },
   {
    "id": "T3",
@@ -737,7 +1000,9 @@
    "priority": "next",
    "due": "13 Nov",
    "status": "Agreed",
-   "t": 1690
+   "t": 1690,
+   "why": "Bigger customers ask how their data is handled before connecting anything.",
+   "done": "A one-page note is ready to send with invites."
   },
   {
    "id": "T4",
@@ -749,7 +1014,13 @@
    "priority": "next",
    "due": "Before 23 Nov",
    "status": "Proposed",
-   "t": 1600
+   "t": 1600,
+   "why": "Security questions come before anyone connects their data.",
+   "done": "Every beta invite includes the June SOC 2 report.",
+   "extra": {
+    "label": "Note",
+    "text": "Marco suggested it; Nadia was not on the call"
+   }
   },
   {
    "id": "T5",
@@ -763,7 +1034,13 @@
    "due": "18 Nov",
    "status": "Agreed",
    "t": 2900,
-   "top": true
+   "top": true,
+   "why": "The two-week price test needs both prices live.",
+   "done": "Both pages are live and beta trials are split between them.",
+   "extra": {
+    "label": "Blocks",
+    "text": "The price test"
+   }
   },
   {
    "id": "T6",
@@ -776,7 +1053,9 @@
    "priority": "next",
    "due": "Next week",
    "status": "Open",
-   "t": 3220
+   "t": 3220,
+   "why": "Sarah leans no, but Nadia hears the renewal conversations.",
+   "done": "A yes or no on three free months for existing customers."
   },
   {
    "id": "T7",
@@ -788,7 +1067,13 @@
    "priority": "next",
    "due": "Week 1",
    "status": "Agreed",
-   "t": 3390
+   "t": 3390,
+   "why": "Week 1 of the launch plan.",
+   "done": "All 10 beta customers have had their call.",
+   "extra": {
+    "label": "Also",
+    "text": "Ask about their Monday report (T11)"
+   }
   },
   {
    "id": "T8",
@@ -800,7 +1085,9 @@
    "priority": "next",
    "due": "Week 1",
    "status": "Agreed",
-   "t": 3390
+   "t": 3390,
+   "why": "Week 2 is the public launch.",
+   "done": "The message is ready for the agency's campaign."
   },
   {
    "id": "T9",
@@ -812,7 +1099,13 @@
    "priority": "next",
    "due": "25 Nov",
    "status": "Agreed",
-   "t": 3880
+   "t": 3880,
+   "why": "The agency needs them to build the landing page.",
+   "done": "Final screenshots are with Tom's agency.",
+   "extra": {
+    "label": "Blocks",
+    "text": "The landing page (T10)"
+   }
   },
   {
    "id": "T10",
@@ -826,7 +1119,13 @@
    "status": "Agreed",
    "t": 3880,
    "external": true,
-   "top": true
+   "top": true,
+   "why": "Week 2 public launch.",
+   "done": "The landing page is live.",
+   "extra": {
+    "label": "Waits for",
+    "text": "Screenshots by 25 Nov (T9)"
+   }
   },
   {
    "id": "T11",
@@ -838,7 +1137,9 @@
    "priority": "next",
    "due": "Week 1",
    "status": "Agreed",
-   "t": 4180
+   "t": 4180,
+   "why": "Time saved can only be shown against a baseline.",
+   "done": "Each beta customer's current Monday report time is written down."
   },
   {
    "id": "T12",
@@ -849,9 +1150,12 @@
    "priority": "next",
    "due": "TBC",
    "status": "Needs owner",
-   "t": 3300
+   "t": 3300,
+   "why": "There is no sales engineer yet, and Marco can't join every call.",
+   "done": "Someone is named, or a hire is planned."
   }
  ],
+ "taskNote": "",
  "watch": [
   {
    "person": "olivia",
@@ -1019,7 +1323,6 @@
    "t": 210
   }
  ],
- "taskNote": "",
  "quiz": {
   "pass": 5,
   "minutes": 2,

@@ -6,8 +6,10 @@ Options:
   --config DIR   folder with team.json, glossary.json and photos/ (default: ../config next to this script)
 
 Reads data.json (see references/data-schema.md), cleans the transcript with config/glossary.json,
-maps speakers with config/team.json aliases, embeds photos from config/photos/<id>.webp|png|jpg,
-and writes a self-contained board.html plus the .xlsx (also embedded in the page for download).
+maps speakers with config/team.json aliases, merges lines that have no timestamps ("untimed", from a
+backup recorder), embeds photos from config/photos/<id>.webp|png|jpg, checks the v2 fields a reader
+who missed the call needs, and writes a self-contained board.html plus the .xlsx (also embedded in the
+page for download).
 Needs: Python 3.9+, openpyxl. Pillow is optional (only for .png/.jpg photos).
 """
 import argparse
@@ -41,7 +43,7 @@ team = json.loads((cfg / "team.json").read_text(encoding="utf8")) if (cfg / "tea
 gloss = json.loads((cfg / "glossary.json").read_text(encoding="utf8")) if (cfg / "glossary.json").exists() else {}
 P = {p["id"]: p for p in D["people"]}
 PJ = {p["id"]: p["name"] for p in D["projects"]}
-for key in ("tasks", "decisions", "open", "watch", "notes", "spelling", "chapters"):
+for key in ("tasks", "decisions", "open", "watch", "notes", "spelling", "chapters", "terms", "untimed"):
     D.setdefault(key, [])
 D.setdefault("quiz", {"pass": 0, "minutes": 0, "questions": []})
 
@@ -113,7 +115,46 @@ if args.transcript and Path(args.transcript).exists():
             utt.append({"s": s, "sp": sp, "text": text})
 if unknown:
     print("WARNING: speakers not in data.json people or team.json aliases (their lines were skipped):", ", ".join(sorted(unknown)))
+
+# lines with no timestamp (a backup recorder): placed at "at" seconds, marked nt so the board shows "no time"
+for x in D["untimed"]:
+    sp = x.get("sp") or "unmarked"
+    if sp not in P:
+        D["people"].append({"id": sp, "name": "Unmarked speaker", "title": "Backup recorder, no names", "attended": False, "notime": True})
+        P[sp] = D["people"][-1]
+    text = x["text"]
+    for pat, rep_ in FIXES:
+        text, n = re.subn(pat, rep_, text, flags=re.I); fixes += n
+    utt.append({"s": int(x["at"]), "sp": sp, "text": text, "nt": True})
+utt.sort(key=lambda u: (u["s"], 1 if u.get("nt") else 0))
+del D["untimed"]
 D["transcript"] = utt
+
+# ---------- checks for readers who missed the call ----------
+def warn(msg):
+    print("CHECK:", msg)
+if not D.get("context"):
+    warn("no 'context' (before / call / question / decided): the overview cannot explain why the meeting happened")
+for c in D["chapters"]:
+    if not c.get("summary"):
+        warn(f"chapter {c['n']} has no 'summary'")
+for t in D["tasks"]:
+    if not t.get("why") or not t.get("done"):
+        warn(f"task {t['id']} has no 'why' or 'done': it will not make sense on its own")
+if not D["terms"]:
+    warn("no 'terms': list the acronyms, team words and names a newcomer would not know")
+pic = D.get("picture")
+if pic and int(pic.get("confidence", 100)) < 90 and not pic.get("ask"):
+    warn("picture confidence is under 90% but 'ask' has no timestamps for screenshots")
+pids = {p["id"] for p in D["projects"]}
+stages = [s["name"] if isinstance(s, dict) else s for s in D.get("stages") or ["Idea", "Shaping", "Planned", "Building", "Live"]]
+for p in D["projects"]:
+    if p.get("stage") and p["stage"] not in stages:
+        warn(f"project {p['id']} stage '{p['stage']}' is not one of {stages}")
+for k in ("tasks", "decisions", "open", "chapters"):
+    for x in D[k]:
+        if x.get("project") and x["project"] not in pids:
+            warn(f"{k}: project '{x['project']}' is not in projects")
 D["clean"] = {"lines_before": before, "lines_after": len(utt), "fixes": fixes}
 
 # ---------- photos ----------
@@ -171,9 +212,12 @@ rows = []
 for t in D["tasks"]:
     owners = ", ".join(name(o) for o in t["owners"]) or ("Needs owner" + (f' (suggested: {name(t["suggested"])})' if t.get("suggested") else ""))
     pr = {"now": "Do now", "next": "Next", "proposed": "Proposed"}.get(t["priority"], t["priority"])
-    rows.append([(t["id"], 0), (t["task"], 0), (owners, 0), ("External" if t.get("external") else "Our team", 0), (PJ.get(t["project"], t["project"]), 0),
+    extra = t.get("extra") or {}
+    rows.append([(t["id"], 0), (t["task"], 0), (t.get("why", ""), 0), (t.get("done", ""), 0), ((extra.get("label", "") + ": " + extra.get("text", "")) if extra.get("text") else "", 0),
+                 (owners, 0), ("External" if t.get("external") else "Our team", 0), (PJ.get(t["project"], t["project"]), 0),
                  (pr, 0), (t["due"], 0), (t["status"], 0), ("", 0), (fmt(t["t"]), at(t["t"])), (chapter(t["t"]), 0)])
-sheet(ws, ["ID", "Task", "Owner", "Team", "Project", "Priority", "Due", "Status", "Done?", "Recording", "Chapter"], rows, [6, 60, 30, 11, 20, 11, 16, 16, 8, 11, 40], 9)
+sheet(ws, ["ID", "Task", "Why", "Done when", "Note", "Owner", "Team", "Project", "Priority", "Due", "Status", "Done?", "Recording", "Chapter"], rows,
+      [6, 50, 40, 34, 30, 26, 11, 20, 11, 16, 16, 8, 11, 36], 12)
 ws = wb.create_sheet("Decisions")
 sheet(ws, ["Decision", "Why", "Type", "Project", "Recording"],
       [[(d["text"], 0), (d.get("why", ""), 0), (d["kind"], 0), (PJ.get(d["project"], ""), 0), (fmt(d["t"]), at(d["t"]))] for d in D["decisions"]], [44, 60, 11, 20, 11], 4)
@@ -185,16 +229,23 @@ ws = wb.create_sheet("Who watches what")
 sheet(ws, ["Person", "Role", "What to watch", "Length", "Start"],
       [[(name(w["person"]), 0), (P.get(w["person"], {}).get("title", ""), 0), (lbl, 0), (f"{max(1, round((e - s) / 60))} min", 0), (fmt(s), at(s))] for w in D["watch"] for s, e, lbl in w["ranges"]],
       [18, 38, 44, 9, 11], 4)
+ws = wb.create_sheet("Words")
+sheet(ws, ["Word", "Meaning", "Captions heard", "Note"],
+      [[(x["term"], 0), (x.get("meaning", ""), 0), (", ".join(x.get("heard", [])), 0), (x.get("note", ""), 0)] for x in D["terms"]], [20, 60, 30, 36], 0)
 ws = wb.create_sheet("Spelling fixes")
 sheet(ws, ["Heard as", "Fix", "Sure?", "Meaning", "Example", "Recording"],
       [[(s["heard"], 0), (s["fix"], 0), ("Yes" if s["sure"] else "Confirm", 0), (s["meaning"], 0), (s["example"], 0), (fmt(s["t"]), at(s["t"]))] for s in D["spelling"]],
       [24, 18, 9, 36, 50, 11], 5)
 ws = wb.create_sheet("Clean transcript")
-sheet(ws, ["Time", "Speaker", "Chapter", "Text"], [[(fmt(u["s"]), at(u["s"])), (name(u["sp"]), 0), (chapter(u["s"]), 0), (u["text"], 0)] for u in utt], [10, 16, 34, 110], 0)
+sheet(ws, ["Time", "Speaker", "Chapter", "Text"], [[("no time" if u.get("nt") else fmt(u["s"]), "" if u.get("nt") else at(u["s"])), (name(u["sp"]), 0), (chapter(u["s"]), 0), (u["text"], 0)] for u in utt], [10, 16, 34, 110], 0)
 ws = wb.create_sheet("Meeting")
 M = D["meta"]
 for k, v in [("Title", M["title"]), ("Date", f'{M["date"]}, {M.get("start", "")}'), ("Medium", M.get("medium", "")), ("Place", M.get("place", "")),
-             ("Duration", fmt(M["duration"])), ("Agenda", M.get("agenda", "")), ("Summary", D["summary"]["lead"] + " " + D["summary"].get("accent", "")), ("Recording", M.get("recording", ""))]:
+             ("Duration", fmt(M["duration"])), ("Agenda", M.get("agenda", "")), ("Summary", D["summary"]["lead"] + " " + D["summary"].get("accent", "")),
+             ("Why it happened", " ".join(v for v in [(D.get("context") or {}).get(k, "") for k in ("before", "call", "question")] if v)),
+             ("What they decided", (D.get("context") or {}).get("decided", "")),
+             ("What we could hear", " ".join(c.get("note", "") for c in M.get("coverage", []) if c.get("quality") != "good") or "Everything, with names and times"),
+             ("Recording", M.get("recording", ""))]:
     ws.append([k, v])
 ws.column_dimensions["A"].width = 14; ws.column_dimensions["B"].width = 100
 for c in ws["A"]:
